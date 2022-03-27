@@ -1,0 +1,20 @@
+.CartWidget {
+        
+        color:orange;
+        width: auto;
+        padding: 12px;
+        background-color: rgb(3, 68, 245);
+        border-radius: 100%;
+
+
+
+}
+
+.CartImg {
+
+    width: 20px;
+    margin-right: 10px;
+
+
+
+}
