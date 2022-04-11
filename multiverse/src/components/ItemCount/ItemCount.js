@@ -1,40 +1,44 @@
 
-const ItemCount = ({onAdd, stock, initial,count}) => {
+import './ItemCount.css' 
 
-    return (
-        
+import { useState, useEffect } from 'react'
+
+const ItemCount = ({initial, stock, onAdd}) => {
+    const [count, setCount] = useState(1)
+    
+ 
+   
+    useEffect(() => {
+       
+    }, [count])
+
+
+    const decrement = () => {
+        setCount(count - 1)
+    }
+
+    const increment = () => {
+        setCount(count + 1)
+    }
+
+   
+    return(
         <div>
+
+            <div className='ContadorCard'>
+            
+            <button onClick={decrement}>-</button> 
+            <p className='Info'> {count}</p>
+            <button onClick={increment}>+</button>
+            </div>
 
             
 
-            <button onClick={() => { 
 
-                        if (count > initial) {
-                         onAdd('-');
-                    }
-                
-                }}
-                
-                >-</button>
-
-                {count}
-
-            <button onClick={() =>  { 
-                
-                    if (count < stock) { 
-                        
-                        onAdd('+');
-                    }
-                }}
-                
-                >+</button>
-
-
+            <div> <button onClick={() => onAdd(count)}>Agregar al carrito</button> </div>
+            
         </div>
-    
-    );
+    )
+} 
 
-
-} ;
-
-export default ItemCount ;
+export default ItemCount

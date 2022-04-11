@@ -1,36 +1,40 @@
 import './NavBar.css'
 import CartWidget from '../CartWidget/CartWidget';
-
+import { Link, NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { getCategories } from '../../mock/axies';
 
 const NavBar = (props) => {
-    console.log (props); 
+    
+    const [categories,setCategories] = useState([])
+
+    useEffect (()=>{
+        getCategories().then(categories=>{
+            setCategories(categories)
+
+        })
+    },[])
 
     return (
         <nav className= "NavBar">
-        <img  src={'./images/NFT_Icon.png'} width={50} alt="Icono: Logo del juego"/>
-        <div><h3>{props.name}</h3> </div>       
+           <Link to='/'> <img  src={'../images/NFT_Icon.png'} width={50} alt="Icono: Logo del juego"/> </Link> 
         
-        <div>
-            <button> Inicio</button>
-            <button> Jugar</button>
-            <button> Videos</button>
-            <button> Fotos</button>
-            <button> Contacto</button>
+        <Link to='/'><h3>{props.name}</h3> </Link>       
+        
+        <div className='Categories'>
+            
+            {categories.map(cat=> <NavLink key={cat.id} to={`/category/${cat.id}`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>{cat.description}</NavLink>)}
+            
+
         </div>     
 
         <div>
             <CartWidget />
         </div>
-        
-        
-        
-        
+
     </nav>
-        
 
-     
     )
-
 
 }
 
