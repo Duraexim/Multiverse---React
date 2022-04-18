@@ -25,6 +25,32 @@
 
 .Info{ color: orange;}
 
+.cantidad { color:orange;}
+
+.input {
+    color: orange;
+    margin-left: 20px;
+    align-items: center;
+    display:grid;
+    gap:1rem;
+    grid-template-columns:repeat(3, 1fr);
+    margin-top: 1rem;
+
+
+}
+
+.box {
+    background-color: rgb(33, 56, 82);
+    color: orange;
+    width: 80%;
+    align-self: start;
+    align-items: center;
+    
+    
+}
+
+
+
 
 
 
