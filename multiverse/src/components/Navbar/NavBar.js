@@ -37,7 +37,7 @@ const NavBar = (props) => {
         <nav className= "NavBar">
            <Link to='/'> <img  src={'../images/NFT_Icon.png'} width={50} alt="Icono: Logo del juego"/> </Link> 
         
-        <Link to='/'><h3>{props.name}</h3> </Link>       
+        <Link className='WebName' to='/'><h3 >{props.name}</h3> </Link>       
         
         <div className='Categories'>
             

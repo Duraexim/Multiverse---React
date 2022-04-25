@@ -1,5 +1,5 @@
 import  {useState, useEffect} from 'react';
-import { getDocs, collection, query, where, orderBy} from 'firebase/firestore';
+import { getDocs, collection, query, where, orderBy,limit} from 'firebase/firestore';
 // import { getAxies } from '../../mock/axies';
 import ItemList from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom';
@@ -26,7 +26,7 @@ const ItemListContainer = () => {
         */}
         const collectionRef = categoryId
             ? query (collection(firestoreDb, 'axies'), where('category','==',categoryId))
-            : query(collection (firestoreDb, 'axies'), orderBy('clase','asc'))
+            : query(collection (firestoreDb, 'axies'), orderBy('clase','asc'), limit(3))
 
         getDocs(collectionRef).then(response=> {
             console.log(response)
