@@ -3,6 +3,7 @@ import { useContext} from 'react'
 import {  Link } from 'react-router-dom'
 import ItemCount from '../ItemCount/ItemCount'
 import CartContext from '../../context/CartContext'
+import { useNotification } from '../../Notification/Notification'
 
 
 
@@ -11,6 +12,8 @@ import CartContext from '../../context/CartContext'
 const ItemDetail = ({id,clase,precio,img,descripcion,stock}) => {
 
     const {addItem, isInCart } = useContext (CartContext)
+
+    const {setNotification} = useNotification ()
     
     const handleAdd = (count) => {
         const productObj = {
@@ -18,6 +21,7 @@ const ItemDetail = ({id,clase,precio,img,descripcion,stock}) => {
         }
 
         addItem (productObj)
+        setNotification ('success',`Se agregraron ${count} ${clase} correctamente`)
     }
 
     
@@ -39,6 +43,7 @@ const ItemDetail = ({id,clase,precio,img,descripcion,stock}) => {
             </picture>
 
             <section>
+                
                 <p className='Info'>
                    {descripcion}
                 </p>
@@ -55,7 +60,11 @@ const ItemDetail = ({id,clase,precio,img,descripcion,stock}) => {
 
             <footer className='ItemFooter'>
                               
-                {isInCart (id) ? <Link to='/cart'>Ir al carrito</Link> : <ItemCount onAdd={handleAdd} stock={stock}/>}
+                {
+                    isInCart (id) 
+                        ? <Link to='/cart' className='Option'>Ir al carrito</Link> 
+                        : <ItemCount onAdd={handleAdd} stock={stock}/>
+                }
               
             </footer>
 

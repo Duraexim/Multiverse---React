@@ -3,11 +3,16 @@
         color:orange;
         width: auto;
         padding: 12px;
-        background-color: rgb(3, 68, 245);
+        background-color: rgb(33, 56, 82);
         border-radius: 100%;
 
 
 
+}
+
+.CartWidget:hover {
+    background-color: white;
+    color: rgb(33, 56, 82);
 }
 
 .CartImg {

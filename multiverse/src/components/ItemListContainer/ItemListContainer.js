@@ -1,8 +1,9 @@
 import  {useState, useEffect} from 'react';
-import { getAxies } from '../../mock/axies';
+import { getDocs, collection, query, where, orderBy} from 'firebase/firestore';
+// import { getAxies } from '../../mock/axies';
 import ItemList from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom';
-
+import {firestoreDb} from '../../services/firebase'
 
 
 const ItemListContainer = () => {
@@ -15,15 +16,34 @@ const ItemListContainer = () => {
 
         useEffect(()=> {
         
-            getAxies(categoryId).then(axi=> {
+         {/* getAxies(categoryId).then(axi=> {
                 
                 setAxies(axi)
             }).catch(error=>{
                 console.log(error)
             })
 
+        */}
+        const collectionRef = categoryId
+            ? query (collection(firestoreDb, 'axies'), where('category','==',categoryId))
+            : query(collection (firestoreDb, 'axies'), orderBy('clase','asc'))
+
+        getDocs(collectionRef).then(response=> {
+            console.log(response)
+            const axies = response.docs.map(doc=> {
+                return {id: doc.id, ...doc.data()}
+            })
+            setAxies(axies)
+        })
+
         }, [categoryId])
 
+        if(axies.length === 0) {
+            return <h1>No hay Axies</h1>
+        }
+        
+
+        
 
     return (
         <div> 

@@ -1,0 +1,63 @@
+
+.Item {
+    
+    width: auto;
+    padding: 1rem;
+    
+    
+    
+}
+
+
+.Button {
+    border-radius: 25;
+    margin: 5px 10px;
+    background: orange;
+    border-radius: 8px;
+    flex: none;
+    width: auto;
+       
+    text-decoration: none;
+    color:  rgb(33, 56, 82);
+    border: none;
+    border-style: none;
+    cursor: pointer;
+    outline: inherit;
+  }
+
+  .Button:hover {
+      background-color:rgb(21, 255, 0);
+  }
+
+
+  .ButtonQuitar {
+    border-radius: 25;
+    margin: 5px 10px;
+    background: orange;
+    border-radius: 8px;
+    flex: none;
+    width: auto;
+       
+    text-decoration: none;
+    color:  rgb(33, 56, 82);
+    border: none;
+    border-style: none;
+    cursor: pointer;
+    outline: inherit;
+  }
+
+  .ButtonQuitar:hover {
+      background-color:rgb(255, 0, 0);
+  }
+
+  .ItemHeader{ color:orange;}
+
+  .Info{ color: orange}
+
+  .ItemImg { 
+
+    color: orange;
+    width: 300px;
+    object-fit: cover;
+    object-position: center;
+}
