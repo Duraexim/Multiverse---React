@@ -3,60 +3,53 @@ import { useContext } from "react"
 import CartContext from "../../context/CartContext"
 
 
-const ItemCart = () => {
+const ItemCart = ({id, clase, quantity,precio, img}) => {
 
-    const {cart,removeItem} = useContext (CartContext)
+    const {removeItem} = useContext (CartContext)
+    const handleRemove = (id) => {
+        removeItem (id)
+    }
 
     return (
              
         <div className="ItemsCart">
-
-
-            {
-                cart.map ( axie => 
-                    
             
-                <article className='CardItem'>
+                        <article className='CardItem'>
 
-                        <header className='Header'>
-                            
-                            <h2 className='ItemHeader'>
-                                {axie.clase}
-                            </h2>
+                                <header className='Header'>
+                                    
+                                    <h2 className='ItemHeader'>
+                                        {clase}
+                                    </h2>
 
-                        </header>
+                                </header>
 
-                        <picture>
-                            <img src={axie.img} alt={axie.clase} className='ItemImg'/>
-                        </picture>
+                                <picture>
+                                    <img src={img} alt={clase} className='ItemImg'/>
+                                </picture>
 
-                        <section>
-                            
-                            <p className='Info'>
-                                Precio unitario: ${axie.precio}
-                            </p>
+                                <section>
+                                    
+                                    <p className='Info'>
+                                        Precio unitario: ${precio}
+                                    </p>
 
-                            <p className='Info'>
-                                Cantidad: {axie.quantity}
-                            </p>
+                                    <p className='Info'>
+                                        Cantidad: {quantity}
+                                    </p>
 
-                            <p className='Info'>
-                                Subtotal: ${axie.quantity * axie.precio}
-                            </p>
+                                    <p className='Info'>
+                                        Subtotal: ${quantity * precio}
+                                    </p>
 
-                            <button className='ButtonQuitar' onClick={() => removeItem(axie.id)}>Quitar del carrito</button>
-                            
+                                    <button className='ButtonQuitar' onClick={() => handleRemove(id)}>Quitar del carrito</button>
+                                    
 
-                        </section>
+                                </section>
 
-                    
-                </article> ) } 
-
-                <p>Total Final: $ </p>
-
-              
-        
-        
+                        
+                        </article> 
+                   
         </div>
             
 

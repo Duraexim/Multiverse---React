@@ -6,21 +6,37 @@ export const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState([])
     
 
-    const addItem = (productToAdd) => {
-        setCart([...cart, productToAdd])
+    const addItem = (axieToAdd) => {
+        if(!isInCart(axieToAdd.id)) {
+            setCart([...cart, axieToAdd])
+        } else {
+            const newAxies = cart.map(axie => {
+                if(axie.id === axieToAdd.id) {
+                    const newAxie = {
+                        ...axie,
+                        quantity: axieToAdd.quantity
+                    }
+                    return newAxie
+                } else {
+                    return axie
+                }
+            })
+            setCart(newAxies)
+        }
     }
+
 
     const getQuantity = () => {
         let count = 0
-        cart.forEach(prod => {
-            count += prod.quantity
+        cart.forEach(axie => {
+            count += axie.quantity
         })
 
         return count
     }
     
     const isInCart = (id) => {
-        return cart.some(prod => prod.id === id )
+        return cart.some(a=> a.id === id )
     }
 
     const clearCart = () => {
@@ -28,8 +44,21 @@ export const CartContextProvider = ({ children }) => {
     }
 
     const removeItem = (id) => {
-        const products = cart.filter(prod => prod.id !== id)
-        setCart(products)
+        const axies = cart.filter(axie => axie.id !== id)
+        setCart(axies)
+    }
+
+    const getQuantityAxie = (id) => {
+        return cart.find(axie => axie.id === id)?.quantity
+    }
+
+    const getTotal = () => {
+        let total = 0
+        cart.forEach(axie => {
+            total += axie.quantity * axie.precio
+        })
+        
+        return total
     }
 
     return(
@@ -39,7 +68,9 @@ export const CartContextProvider = ({ children }) => {
             getQuantity,
             isInCart,
             clearCart,
-            removeItem
+            removeItem,
+            getQuantityAxie,
+            getTotal
         }}>
             {children}
         </CartContext.Provider>

@@ -13,27 +13,21 @@ const ItemDetailContainer = ({setCart, cart}) => {
 
     useEffect(() => {
 
-        //getAxiesById(axieId).then(item => {
-        //    setAxie(item)          
-        //}).catch(err  => {
-        //    console.log(err)
-        //}).finally(() => {
-        //    setLoading(false)
-        //})
+        setLoading(true)
 
-        //return (() => {
-        //    setAxie()
-        //}) 
+        const docRef = doc (firestoreDb, 'axies', axieId)
 
-        getDoc(doc(firestoreDb, 'axies', axieId)).then(response=> {
-
-            const axie = { id: response.id, ...response.data()}
-            setAxie (axie)
-        })
-
-        return (()=> {
-            setAxie()
-        })
+        getDoc (docRef)
+            .then(response => {
+                const axie = {id: response.id, ...response.data()}
+                setAxie(axie)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+            .finally(()=> {
+                setLoading(false)
+            })
 
     }, [axieId])
 
@@ -48,9 +42,9 @@ const ItemDetailContainer = ({setCart, cart}) => {
     return (
         <div className="ItemDetailContainer" >
             { 
-                axie ? 
-                    <ItemDetail  {...axie} setCart={setCart} cart={cart}/> :
-                    <h1>El Axie no existe</h1> 
+                axie 
+                ? <ItemDetail  {...axie} setCart={setCart} cart={cart}/> 
+                : <h1>El Axie no existe</h1> 
             }
         </div>
     )    

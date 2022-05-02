@@ -1,15 +1,17 @@
 import './NavBar.css'
 import CartWidget from '../CartWidget/CartWidget';
 import { Link, NavLink } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useContext } from 'react';
 import { getCategories } from '../../mock/axies';
 import { firestoreDb } from '../../services/firebase';
 import { getDocs, collection } from 'firebase/firestore';
+import CartContext from '../../context/CartContext';
 
 
 const NavBar = (props) => {
     
     const [categories,setCategories] = useState([])
+    const {cart} = useContext (CartContext)
 
     useEffect (()=>{
 
@@ -46,7 +48,7 @@ const NavBar = (props) => {
 
         </div>     
 
-        <div>
+        <div className={cart.length === 0 ? "visually-hidden":"d-block"}>
             <CartWidget />
         </div>
 

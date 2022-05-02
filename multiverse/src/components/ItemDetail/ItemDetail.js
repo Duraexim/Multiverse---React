@@ -11,16 +11,16 @@ import { useNotification } from '../../Notification/Notification'
 
 const ItemDetail = ({id,clase,precio,img,descripcion,stock}) => {
 
-    const {addItem, isInCart } = useContext (CartContext)
+    const {addItem, isInCart, getQuantityAxie } = useContext (CartContext)
 
     const {setNotification} = useNotification ()
     
     const handleAdd = (count) => {
-        const productObj = {
-            id, clase, precio, quantity : count
+        const axieObj = {
+            id, clase, precio, img,quantity : count
         }
 
-        addItem (productObj)
+        addItem (axieObj)
         setNotification ('success',`Se agregraron ${count} ${clase} correctamente`)
     }
 
@@ -63,7 +63,7 @@ const ItemDetail = ({id,clase,precio,img,descripcion,stock}) => {
                 {
                     isInCart (id) 
                         ? <Link to='/cart' className='Option'>Ir al carrito</Link> 
-                        : <ItemCount onAdd={handleAdd} stock={stock}/>
+                        : <ItemCount onAdd={handleAdd} stock={stock} initial={getQuantityAxie(id)}/>
                 }
               
             </footer>

@@ -2,6 +2,7 @@ import './App.css';
 import NavBar from './components/Navbar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/IteamDetailContainer/ItemDetailContainer';
+import Form from './components/Form/Form';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import {CartContextProvider} from './context/CartContext';
 import Cart from './components/Cart/Cart';
@@ -28,6 +29,7 @@ const App = () => {
                     <Route path= '/category/:categoryId' element={<ItemListContainer/>}/>
                     <Route path= '/detail/:axieId' element={<ItemDetailContainer/>}/>
                     <Route path='/cart' element={<Cart />} />
+                    <Route path='/form' element={<Form />} />
                     <Route path= '*' element={<h1>NOT FOUND 404</h1>}/>
                   </Routes>
               </BrowserRouter>

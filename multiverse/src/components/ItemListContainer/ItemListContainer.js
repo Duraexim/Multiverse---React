@@ -16,14 +16,7 @@ const ItemListContainer = () => {
 
         useEffect(()=> {
         
-         {/* getAxies(categoryId).then(axi=> {
-                
-                setAxies(axi)
-            }).catch(error=>{
-                console.log(error)
-            })
-
-        */}
+        
         const collectionRef = categoryId
             ? query (collection(firestoreDb, 'axies'), where('category','==',categoryId))
             : query(collection (firestoreDb, 'axies'), orderBy('clase','asc'), limit(3))
