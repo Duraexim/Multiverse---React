@@ -34,7 +34,8 @@ const ItemDetailContainer = ({setCart, cart}) => {
     if (loading) {
 
         return (
-            <h1>Cargando...</h1>
+            
+            <h1 className="Cargando H1">Cargando...</h1>
         )
     }
 
@@ -44,7 +45,7 @@ const ItemDetailContainer = ({setCart, cart}) => {
             { 
                 axie 
                 ? <ItemDetail  {...axie} setCart={setCart} cart={cart}/> 
-                : <h1>El Axie no existe</h1> 
+                : <h1 className='H1'>El Axie no existe</h1> 
             }
         </div>
     )    

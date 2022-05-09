@@ -12,13 +12,13 @@ const ItemCart = ({id, clase, quantity,precio, img}) => {
 
     return (
              
-        <div className="ItemsCart">
+        <div>
             
                         <article className='CardItem'>
 
                                 <header className='Header'>
                                     
-                                    <h2 className='ItemHeader'>
+                                    <h2 className='ItemHeader H2'>
                                         {clase}
                                     </h2>
 
@@ -30,15 +30,15 @@ const ItemCart = ({id, clase, quantity,precio, img}) => {
 
                                 <section>
                                     
-                                    <p className='Info'>
+                                    <p className='Info P'>
                                         Precio unitario: ${precio}
                                     </p>
 
-                                    <p className='Info'>
+                                    <p className='Info P'>
                                         Cantidad: {quantity}
                                     </p>
 
-                                    <p className='Info'>
+                                    <p className='Info P'>
                                         Subtotal: ${quantity * precio}
                                     </p>
 

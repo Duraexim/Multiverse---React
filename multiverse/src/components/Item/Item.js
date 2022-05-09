@@ -9,7 +9,7 @@ const Item = ({id,clase,img,precio}) => {
            
            <header className='Header'>
 
-             <h2 className='ItemHeader'>
+             <h2 className='ItemHeader H2'>
                {clase}
              </h2>
 
@@ -21,7 +21,7 @@ const Item = ({id,clase,img,precio}) => {
 
             <section>
 
-              <p className='Info'>
+              <p className='Info P'>
                   Precio: ${precio}
               </p>
             </section>

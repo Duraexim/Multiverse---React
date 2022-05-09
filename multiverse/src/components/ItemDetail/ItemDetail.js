@@ -32,7 +32,7 @@ const ItemDetail = ({id,clase,precio,img,descripcion,stock}) => {
 
             <header className='Header'>
                 
-                <h2 className='ItemHeader'>
+                <h2 className='ItemHeader H2'>
                     {clase}
                 </h2>
 
@@ -42,18 +42,18 @@ const ItemDetail = ({id,clase,precio,img,descripcion,stock}) => {
                 <img src={img} alt={clase} className='ItemImg'/>
             </picture>
 
-            <section>
+            <section> 
                 
-                <p className='Info'>
+                <p className='Info P'>
                    {descripcion}
                 </p>
 
-                <p className='Info'>
+                <p className='Info P'>
                     Stock: {stock}
                 </p>
 
-                <p className='Info'>
-                    Precio: {precio}
+                <p className='Info P'>
+                    Precio: ${precio}
                 </p>
 
             </section>
@@ -62,7 +62,7 @@ const ItemDetail = ({id,clase,precio,img,descripcion,stock}) => {
                               
                 {
                     isInCart (id) 
-                        ? <Link to='/cart' className='Option'>Ir al carrito</Link> 
+                        ? <Link to='/cart' className='Boton'>Ir al carrito</Link> 
                         : <ItemCount onAdd={handleAdd} stock={stock} initial={getQuantityAxie(id)}/>
                 }
               

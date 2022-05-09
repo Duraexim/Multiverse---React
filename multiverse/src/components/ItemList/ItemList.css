@@ -1,8 +1,88 @@
-.ContainerClases {
+
+@media only screen and (max-width:768px) { 
     
+  
+.ContainerClases {
+      
+           display: block;
+         
+       }
+      
+.CardItem{ 
+    width: 60%;
+}
+
+  .ItemImg {width: 40%;}
+
+  
+  
+}
+
+
+
+@media only screen and (min-width:768px) {
+  
+  
+  .ItemImg {width: 50%;}
+  
+
+
+  .ContainerClases {
+      
+      display: block;
+
+     
+  }
+
+  .CardItem{
+              
+    width: 70%;        
+    
+         
+ }
+  
+
+ 
+}
+
+
+
+@media only screen and (min-width:1024px) {
+
+
+      
+  .ItemImg {width: 60%;}
+
+  
+  .ContainerClases { 
+
     margin-top: 1rem;
     display:grid;
     gap:1rem;
     grid-template-columns:repeat(3, 1fr);
 
+              
+              }
+                      
+ 
+}  
+
+
+
+
+@media only screen and (min-width:1400px) {
+
+  
+  .ContainerClases { 
+
+    margin-top: 1rem;
+    display:grid;
+    gap:1rem;
+    grid-template-columns:repeat(3, 1fr);
+
+
+
 }
+   
+
+} 

@@ -10,7 +10,7 @@ export default class Modal extends Component {
                 {active && (
                     <div style={styles.wrapper}>
                         <div style={styles.window}>
-                            <button style={styles.closeBtn} onClick={toggle}>X</button>
+                            <button className='ButtonQuitar' style={styles.closeBtn} onClick={toggle}>X</button>
                             <div>{children}</div>
                         </div>
                         <div onClick={toggle} style={styles.background}/>
@@ -39,7 +39,7 @@ const styles = {
     window: {
 
         position: 'relative',
-        background: '#fff',
+        background: "rgb(33, 56, 82)",
         borderRadius: 5,
         padding: 15,
         boxShadow: '2px 2px 10px rgba(0,0,0,0.3)',

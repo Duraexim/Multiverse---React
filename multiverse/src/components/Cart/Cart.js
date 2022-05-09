@@ -7,7 +7,7 @@ import { getDocs, writeBatch, query, where, collection, documentId, addDoc} from
 import { firestoreDb} from '../../services/firebase/index'
 import Form from '../Form/Form'
 import Modal from '../../Modal'
-
+import { useNotification } from '../../Notification/Notification'
 
 
 const Cart = () => {
@@ -15,6 +15,7 @@ const Cart = () => {
     const [loading, setLoading] = useState (false)
     const {cart, clearCart, getTotal, getQuantity} = useContext (CartContext)
     const [active, setActive] = useState (false)
+    const {setNotification} = useNotification ()
     const toggle = () => {
         setActive(!active)
     }
@@ -69,29 +70,33 @@ const Cart = () => {
                 }). then (({id})=>{
 
                     batch.commit()
+                    setNotification ('success',`Felicidades, su compra fue generada correctamente!`)
                     console.log (`El id de la orden es ${id} `)
 
                 }).catch(error => {
-                     console.log (error)
+                    setNotification ('Error',`Lo sentimos, su compra no ha podido ser procesada por un error inesperado`)
+                    console.log(error)
                 }).finally (()=> {
                     setLoading (false)
+                    clearCart ()
+
                 })
 
     }
 
     if (loading) {
-        return <h1>Su orden está siendo generada</h1>
+        return <h1 className='OrdenGenerada H1'>Su orden está siendo generada</h1>
     }
 
     if (getQuantity() === 0) {
         return (
 
-            <div>
-                <h1>No hay Axies en el carrito</h1>
+            <div className='EmptyCart'>
+                <h1 className='H1'>No hay Axies en el carrito</h1>
                  
-                 <button>
-                    <Link to='/' className='Option'>Volver a inicio</Link>
-                 </button>
+                
+                    <Link to='/' className='Home'>Volver a inicio</Link>
+                 
                 
                 
             </div>
@@ -104,16 +109,21 @@ const Cart = () => {
 
         <div className='Cart'>
 
-            <h1>Tus Axies:</h1>
-            {cart.map (a=> <ItemCart key={a.id} {...a}/>)}
-            <h2>Total: ${getTotal()}</h2>
-            <button onClick={()=> clearCart()} className='Button' >Vaciar carrito</button>
+
+
+            <h1 className='H1'>Tus Axies:</h1>
+            <div className='ItemsCart'>
+                {cart.map (a=> <ItemCart  key={a.id} {...a}/>)}
+            </div>
             
-            <button onClick={toggle} className='Button'>Checkout</button>
+            <h2 className='H2'>Total: ${getTotal()}</h2>
+            <button onClick={()=> clearCart()} className='ButtonQuitar'>Vaciar carrito</button>
+            
+            <button onClick={toggle} className='BotonConfirmar'>Checkout</button>
             
             <Modal active ={active} toggle={toggle}>
                 <Form/>
-                <button onClick={()=> createOrder()} className='Button' >Finalizar Compra</button>
+                <button onClick={()=> createOrder()} className='BotonConfirmar' >Finalizar Compra</button>
                
                 
             </Modal>

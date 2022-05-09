@@ -1,6 +1,6 @@
 import  {useState, useEffect} from 'react';
 import { getDocs, collection, query, where, orderBy,limit} from 'firebase/firestore';
-// import { getAxies } from '../../mock/axies';
+import './ItemListContainer.css' 
 import ItemList from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom';
 import {firestoreDb} from '../../services/firebase'
@@ -19,7 +19,7 @@ const ItemListContainer = () => {
         
         const collectionRef = categoryId
             ? query (collection(firestoreDb, 'axies'), where('category','==',categoryId))
-            : query(collection (firestoreDb, 'axies'), orderBy('clase','asc'), limit(3))
+            : query(collection (firestoreDb, 'axies'), orderBy('clase','asc'), limit(6))
 
         getDocs(collectionRef).then(response=> {
             console.log(response)
@@ -32,7 +32,7 @@ const ItemListContainer = () => {
         }, [categoryId])
 
         if(axies.length === 0) {
-            return <h1>No hay Axies</h1>
+            return <h1 className='NoHay H1'>No hay Axies</h1>
         }
         
 

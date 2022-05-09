@@ -26,16 +26,17 @@
 .Info{ color: orange;}
 
 
+
 .Boton {
     
     text-decoration: none;
     border-radius: 25;
-    margin: 0 50px;
+    margin: 0 90px;
     
     width: auto;
     padding: 12px;
     font-size: 15px;
-    background: orange;
+    background: none;
     border-radius: 8px;
     flex: none;
     display: flex;
@@ -45,7 +46,7 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: rgb(33, 56, 82);
+    color: orange;
     border: none;
     border-style: none;
     cursor: pointer;
@@ -53,6 +54,6 @@
   }
 
   .Boton:hover {
-      background-color: white;
-      color:orange
+      background-color: orange;
+      color:white;
   }

@@ -1,5 +1,152 @@
 .Cart {
     color: orange;
-    background-color: rgb(0, 0, 0);
-
+   
 }
+
+.EmptyCart { 
+    color: orange;
+}
+
+.Home {
+   
+    
+        text-decoration: none;
+        border-radius: 25;
+        margin: auto;
+        
+        width: 10rem;
+        padding: 10px;
+        font-size: 15px;
+        
+        border-radius: 8px;
+        flex: none;
+        display: flex;
+        order: 1;
+        align-self: center;
+        flex-grow: 0;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: orange;
+        border: none;
+        border-style: none;
+        cursor: pointer;
+        outline: inherit;
+
+    
+      
+    
+}
+
+.Home:hover {
+    background-color:orange;
+    color: white;
+}
+
+.OrdenGenerada{ 
+    color: orange;
+}
+
+
+
+@media only screen and (max-width:768px) { 
+       
+    
+  .ItemsCart {
+        
+             display: block;
+           
+         }
+        
+  .CardItem{ 
+      width: 40%;
+  }
+   
+  .ItemImg {width: 40%;}
+    
+}
+  
+
+  
+
+@media only screen and (max-width:768px) { 
+    
+    .ItemsCart {
+        
+        display: block;
+      
+        }
+   
+    .CardItem{ 
+        width: 50%;
+        }
+
+    .ItemImg {width: 50%;}
+      
+}
+    
+    
+    
+    
+    
+    
+    
+    
+@media only screen and (min-width:768px) {
+      
+        .ItemsCart {
+        
+            margin-top: 1rem;
+        display:grid;
+        gap:1rem;
+        grid-template-columns:repeat(3, 1fr);
+          
+        }
+       
+        .CardItem{ 
+            width: 70%;
+        }
+        
+        .ItemImg {width: 70%;}
+            
+     
+ }
+    
+    
+    
+    
+    
+    
+    
+    
+@media only screen and (min-width:1024px) {
+    
+       
+        .CardItem{ 
+            width: 80%;
+        }
+        
+        .ItemImg {width: 70%;}
+                          
+     
+}  
+    
+    
+    
+    
+@media only screen and (min-width:1400px) {
+    
+    
+     
+    .ItemsCart {
+
+        margin-top: 1rem;
+        display:grid;
+        gap:1rem;
+        grid-template-columns:repeat(3, 1fr);
+    
+    }
+       
+    
+} 
+    

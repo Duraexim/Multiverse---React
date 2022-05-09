@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import './Form.css' 
 
 const Form = () => {
 
@@ -23,33 +24,35 @@ const Form = () => {
      }
  }
 
+ 
+
  return (
-        <div>
-            <h2>Tus datos:</h2>
+        <div className='Form'>
+            <h2 className='H2'>Tus datos:</h2>
 
             <form onSubmit={handleSubmit} >
 
                 <div>
                 <label>Nombre:</label>
-                <input type='text' onChange={(e)=> setNombre(e.target.value)} name= ''/>
+                <input className='Entrada' type='text' onChange={(e)=> setNombre(e.target.value)} name= ''/>
                 </div>
 
                 <div>
                 <label>Telefono:</label>
-                <input type='text' onChange={(e)=> setTelefono(e.target.value)} onKeyDown={handleKeyDown} name= ''/>
+                <input className='Entrada' type='text' onChange={(e)=> setTelefono(e.target.value)} onKeyDown={handleKeyDown} name= ''/>
                 </div>
 
                 <div>
                 <label>Dirección:</label>
-                <input type='text' onChange={(e)=> setDireccion(e.target.value)} name= ''/>
+                <input className='Entrada' type='text' onChange={(e)=> setDireccion(e.target.value)} name= ''/>
                 </div>
 
                 <div>
                 <label>Email:</label>
-                <input type='text' onChange={(e)=> setEmail(e.target.value)} onKeyDown={handleKeyDown} name= ''/>
+                <input className='Entrada' type='text' onChange={(e)=> setEmail(e.target.value)} onKeyDown={handleKeyDown} name= ''/>
                 </div>
 
-                <button type='submit' className='Button'>Guardar datos</button>
+                <button type='submit' className='BotonConfirmar'>Guardar datos</button>
 
 
             </form>
