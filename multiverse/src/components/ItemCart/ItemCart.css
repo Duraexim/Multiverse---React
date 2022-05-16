@@ -21,15 +21,24 @@
 
   
   .ButtonQuitar {
+    text-decoration: none;
     border-radius: 25;
-    margin: 5px 10px;
-    background: orange;
+    margin: 0 90px;
+    
+    width: auto;
+    padding: 12px;
+    font-size: 15px;
+    background: none;
     border-radius: 8px;
     flex: none;
-    width: auto;
-       
+    display: flex;
+    order: 1;
+    align-self: center;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
-    color:  rgb(33, 56, 82);
+    color: orange;
     border: none;
     border-style: none;
     cursor: pointer;
@@ -40,3 +49,5 @@
       background-color:rgb(255, 0, 0);
       color:white;
   }
+
+

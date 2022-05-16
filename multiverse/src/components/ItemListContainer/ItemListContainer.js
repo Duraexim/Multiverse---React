@@ -22,7 +22,7 @@ const ItemListContainer = () => {
             : query(collection (firestoreDb, 'axies'), orderBy('clase','asc'), limit(6))
 
         getDocs(collectionRef).then(response=> {
-            console.log(response)
+            
             const axies = response.docs.map(doc=> {
                 return {id: doc.id, ...doc.data()}
             })

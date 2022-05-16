@@ -5,7 +5,6 @@ import ItemCart from "../ItemCart/ItemCart"
 import {  Link } from 'react-router-dom'
 import { getDocs, writeBatch, query, where, collection, documentId, addDoc} from 'firebase/firestore'
 import { firestoreDb} from '../../services/firebase/index'
-import Form from '../Form/Form'
 import Modal from '../../Modal'
 import { useNotification } from '../../Notification/Notification'
 
@@ -20,6 +19,10 @@ const Cart = () => {
         setActive(!active)
     }
 
+    const [nombre,setNombre] = useState("");
+    const [telefono,setTelefono] = useState("");
+    const [email,setEmail] = useState("");
+    const [direccion, setDireccion] = useState('')
 
     const createOrder = () => {
 
@@ -28,12 +31,9 @@ const Cart = () => {
         
             const axieOrder = {
 
+                
+                buyer: { nombre,telefono,email, direccion} , 
                 items: cart,
-                buyer: {
-                    name: 'Santiago Mordasini',
-                    phone: '12222',
-                    email: 'santiago.mordasini@gmail.com',
-                } , 
 
                 total: getTotal (),
                 date: new Date ()
@@ -70,12 +70,12 @@ const Cart = () => {
                 }). then (({id})=>{
 
                     batch.commit()
-                    setNotification ('success',`Felicidades, su compra fue generada correctamente!`)
-                    console.log (`El id de la orden es ${id} `)
+                    setNotification ('success',`Felicidades, su compra fue generada correctamente! El id de la orden es "${id}"`)
+                    
 
                 }).catch(error => {
                     setNotification ('Error',`Lo sentimos, su compra no ha podido ser procesada por un error inesperado`)
-                    console.log(error)
+                    
                 }).finally (()=> {
                     setLoading (false)
                     clearCart ()
@@ -105,6 +105,8 @@ const Cart = () => {
         )
     } 
 
+    
+
     return (
 
         <div className='Cart'>
@@ -117,13 +119,30 @@ const Cart = () => {
             </div>
             
             <h2 className='H2'>Total: ${getTotal()}</h2>
-            <button onClick={()=> clearCart()} className='ButtonQuitar'>Vaciar carrito</button>
+            <button onClick={()=> clearCart()} className='BotonVaciar'>Vaciar carrito</button>
             
             <button onClick={toggle} className='BotonConfirmar'>Checkout</button>
             
             <Modal active ={active} toggle={toggle}>
-                <Form/>
-                <button onClick={()=> createOrder()} className='BotonConfirmar' >Finalizar Compra</button>
+                <div>
+                            <h2 className='H2 '>Datos de compra</h2>
+                            <form onSubmit={createOrder}>
+                                <div>
+                                    <input className='Entrada' onChange={e=>setNombre(e.target.value)} type="text" placeholder="Nombre" value={nombre}/>
+                                </div>
+                                <div>
+                                    <input className='Entrada' onChange={e=>setTelefono(e.target.value)} type="tel" placeholder="Telefono" value={telefono}/>
+                                </div>
+                                <div>
+                                    <input className='Entrada' onChange={e=>setDireccion(e.target.value)} type="text" placeholder="Direccion" value={direccion}/>
+                                </div>
+                                <div>
+                                    <input className='Entrada' onChange={e=>setEmail(e.target.value)} type="email" placeholder="Email" value={email} />
+                                </div>
+                                    <button  type='submit' className='BotonConfirmar' >Finalizar Compra</button>
+                                </form>
+                </div>
+                
                
                 
             </Modal>

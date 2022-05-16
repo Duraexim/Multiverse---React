@@ -8,7 +8,7 @@
     margin-left: 5rem;
     display:grid;
     grid-template-columns:repeat(2, 1fr);
-    color:orange;
+    color:rgb(255, 255, 255);
 }
 
 .botones {
@@ -54,4 +54,20 @@
 }
   .botoncito:hover {background-color: orange;
                     color: white;
+}
+
+.BotonRojo { 
+    background-color:rgb(255, 0, 0);
+    color:white;border-radius: 25;
+    margin: 5px 10px;  
+    border-radius: 8px;
+    flex: none;
+    width: auto;       
+    text-decoration: none;    
+    border: none;
+    border-style: none;
+    cursor: pointer;
+    outline: inherit;
+
+
 }

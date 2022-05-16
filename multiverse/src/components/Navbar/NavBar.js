@@ -1,16 +1,16 @@
 import './NavBar.css'
 import CartWidget from '../CartWidget/CartWidget';
 import { Link, NavLink } from 'react-router-dom';
-import { useState, useEffect,useContext } from 'react';
+import { useState, useEffect} from 'react';
 import { firestoreDb } from '../../services/firebase';
 import { getDocs, collection } from 'firebase/firestore';
-import CartContext from '../../context/CartContext';
+
 
 
 const NavBar = (props) => {
     
     const [categories,setCategories] = useState([])
-    const {cart} = useContext (CartContext)
+    
 
     useEffect (()=>{
 

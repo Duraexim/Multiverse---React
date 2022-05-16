@@ -4,12 +4,12 @@ import {getFirestore} from 'firebase/firestore'
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCkgboEgqRZoYRTzZfYTRVzMZhCL6XZTeg",
-  authDomain: "multiverse---react.firebaseapp.com",
-  projectId: "multiverse---react",
-  storageBucket: "multiverse---react.appspot.com",
-  messagingSenderId: "167189952486",
-  appId: "1:167189952486:web:0a7cb1a3f2314e76cc4827"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 

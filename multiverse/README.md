@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# Multiverse
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Tienda para comprar NFT's
 
-## Available Scripts
+![](public%5Cimages%5CCompra.gif)   ` Gif que muestra la navegación del sitio web realizando una compra`  (El archivo gif se encuentra disponible en la carpeta Public/Images)
 
-In the project directory, you can run:
 
-### `npm start`
+Primero debes crear tu aplicación con el comando:
+`- npx create-react-app multiverse ` 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Para iniciar el programa debes abrir una nueva terminal y escribir los comandos:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ `cd multiverse` 
+ `npm start`
 
-### `npm test`
+Se abrirá tu aplicación de React en el navegador.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+** Es necesario tener instalado en el proyecto las siguientes librerias, instalar utilizando el comando npm install y agregando la libreria deseada:
 
-### `npm run build`
+`react-router-dom` (para poder usar Link)
+`firebase` (para poder utilizar la base de datos de Firebase)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Explicación de los Componentes:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### NavBar: 
+- Es la barra de navegación que nos permite navegar por el sitio, Incluye el nombre-marca-logo del sitio, las categorias de los productos `(setCategories)`, y el widget del carrito `<CartWidget />` , para que podamos acceder al mismo. 
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### CartWidget: 
+- Muestra la cantidad actual de Axies agregados al carrito gracias al `getQuantity()` el cual obtiene los datos del `CartContext` 
+- El CartWidget también nos permite acceder al carrito (componente Cart) para comprobar los productos agregados al mismo.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### CartContext: 
+- Se encarga de agregar `(addItem)` o quitar `(removeItem)` los productos del carrito -componente Cart-, también permite vaciar completamente el mismo `(clearCart)` .
+- Crea el array Cart `(setCart)` que contiene los productos del componente Cart: Esto nos permite obtener la cantidad seleccionada de cada producto `(getQuantityAxie)`, verifica si el producto está repetido en el carrito `( isInCart)`, permite obtener el valor de la suma del precio total de todos los items del carrito `(getTotal)`, muestra la cantidad total de cuantos productos fueron agregados al carrito (en el componente CartWidget) `(getQuantity)` 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### Cart: 
+- Se encarga de mostrar los axies agregados al carrito con sus detalles, e informa el valor total de la compra (tomando los datos del componente `ItemCart` y obteniendo el valor `(getTotal())` del `CartContext`)
+- El componente Cart permite procesar la compra `(createOrder)` con un formulario integrado en el mismo, el cual carga los datos ingresados del usuario en Firebase y registra la orden de compra `(axieOrder)`. Tambien nos permite vaciar el carrito  al usar `clearCart()` del `CartContext`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### ItemCart: 
+- Este componente permite remover el producto del Carrito con `handleRemove()` que funciona gracias al `{removeItem}` del `CartContext`.
+- El ItemCart es el que detalla la información del producto agregado en el carrito, detallando el Precio Unitario del mismo `{precio}`, la cantidad `{quantity}` que el usuario va a comprar, y el Subtotal `{quantity * precio}`.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### ItemDetail:
+- Es el componente encargado de mostrar todos los detalles del producto. 
+- Permite agregar el producto al carrito de compras usando `(addItem)` del `CartContext`, tomando la cantidad elegida por medio del componente `<ItemCount/>` y del `CartContext` `(getQuantityAxie)` en conjunto.
+-  Si el producto ya está en el carrito `(isInCart)`, en vez de permitir al usuario agregarlo nuevamente, aparece un boton para ir al carrito.
+- Si el usuario agrega el producto al carrito, se mostrará una notificacion gracias al `(setNotification)` del componente `Notification`.
+- El componente ItemDetail se muestra en el `ItemDetailContainer`.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### ItemDetailContainer: 
+- Es el contenedor que muestra los detalles del producto, muestra los datos del componente `ItemDetail`.
+- En caso de que el usuario busque un producto que no existe, el contenedor informará que el producto buscado no existe.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### ItemCount:
+- Es el contador presente en el componente `ItemDetail`. 
+- Permite elegir la cantidad (sumando `(sumar)` o restando `(restar)`) del producto a comprar, limitando el input del usuario de acuerdo al stock disponible, para que nunca sea mayor o menor que el mismo. 
+- En caso de no haber stock, no permite comprar el producto, desaparece el contador y aparece un boton sin función que informa que no hay stock.
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Item: 
+- Es el componente que permite acceder a los detalles del producto por medio de un boton
+- Muestra información basica del producto (nombre, imagen y precio)
+- El componente Item se muestra dentro del componente `ItemList`
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### ItemList:
+ - Es el encargado de mostrar una lista de productos en base a los productos disponibles del componente `Item`.
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### ItemListContainer:
+ - Es el contenedor principal del sitio, el cual muestra los productos. 
+ - Acepta filtrado por categoria `{categoryId}`
+ - Muestra los productos del componente `ItemList`.
+
+
+### Services / Firebase:
+- Obtiene la base de datos de `Firebase`. Desde aqui obtenemos la información de nuestros productos, la cual utilizaremos en los diferentes componentes al importar `{firestoreDb}`. 
+- Para que los componentes funcionen correctamente, en la base de datos de firestore al crear el producto debemos detallar la siguiente información: `clase, category, descripcion, img, precio, stock, cantidad ` -   y el `id`, el cual es generado por firebase cuando creamos el producto
+
+
+### Notification: 
+- Nos permite mostrar diferentes notificaciones al usar `(setNotification)` * se debe importar `{useNotification}` en el componente deseado (Actualmente fue utilizada para informar cuando un producto es agregado al carrito correctamente (en el componente `ItemDetail`), cuando la compra es finalizada con exito o si ocurre un error al intentar procesar la compra) (en el componente `Cart`)
+
+
+### Modal: 
+- Un boton Modal que en este caso fue utilizado para mostrar el formulario usado en el componente Cart  `<Modal>`lo que desees mostrar`</Modal>`
+
+
+### Portal: 
+- Nos permite mostrar/utilizar el Modal en cualquier componente del proyecto. Permite montar y desmontar el modal
+
+
+
+
+
+

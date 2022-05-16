@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { getAxiesById } from '../../mock/axies';
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { useParams } from 'react-router-dom'
 import {firestoreDb} from '../../services/firebase'

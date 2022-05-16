@@ -10,14 +10,14 @@ const ItemCount = ({initial =1, stock = 0, onAdd}) => {
 
     const [quantity, setQuantity] = useState (initial)
 
-    const increment = () => {
+    const sumar = () => {
         if ( quantity < stock) {
             setQuantity(quantity+1)
         }
         
     }
 
-    const decrement = ()=> {
+    const restar = ()=> {
         if ( quantity > initial) {
 
             setQuantity (quantity-1)
@@ -26,7 +26,7 @@ const ItemCount = ({initial =1, stock = 0, onAdd}) => {
     }  
     
     if (stock === 0) {
-        return <button className='Boton' disabled>No hay stock</button>
+        return <button className='BotonRojo' disabled>No hay stock</button>
     }
    
 
@@ -35,8 +35,8 @@ const ItemCount = ({initial =1, stock = 0, onAdd}) => {
             <div className='ContadorCard'>
                 <p className='cantidad P'> Cantidad: {quantity}
                     <div className='botones'>
-                        <button onClick={decrement} className='botoncito'>-</button>
-                        <button onClick={increment} className='botoncito'>+</button>
+                        <button onClick={restar} className='botoncito'>-</button>
+                        <button onClick={sumar} className='botoncito'>+</button>
                     </div>
                 
                 </p>     

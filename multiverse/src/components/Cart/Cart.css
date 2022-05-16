@@ -38,6 +38,8 @@
     
 }
 
+.H2 {color: orange;}
+
 .Home:hover {
     background-color:orange;
     color: white;
@@ -47,6 +49,66 @@
     color: orange;
 }
 
+.ButtonCerrar {
+    text-decoration: none;
+    border-radius: 25;
+    margin: 0 20px;
+    margin-top: 10px;
+    width: auto;
+    padding: 12px;
+    font-size: 15px;
+    background: orange;
+    border-radius: 8px;
+    flex: none;
+    display: flex;
+    order: 1;
+    align-self: center;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-style: none;
+    cursor: pointer;
+    outline: inherit;
+  }
+
+  .ButtonCerrar:hover {
+      background-color:rgb(255, 0, 0);
+      color:white;
+  }
+  
+.BotonVaciar {
+    border-radius: 25;
+    margin: 5px 10px;
+    background: orange;
+    border-radius: 8px;
+    flex: none;
+    width: auto;
+       
+    text-decoration: none;
+    color:  rgb(33, 56, 82);
+    border: none;
+    border-style: none;
+    cursor: pointer;
+    outline: inherit;
+  }
+
+  .BotonVaciar:hover {
+      background-color:rgb(255, 0, 0);
+      color:white;
+  }
+
+.Entrada { background-color: rgba(255, 255, 255, 0);
+    padding: 5px;
+    margin: 8px;
+    color:orange}
+    
+.Entrada:hover {
+        background-color: orange;
+        color:white;
+    }
 
 
 @media only screen and (max-width:768px) { 
