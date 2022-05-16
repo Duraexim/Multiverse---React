@@ -2,7 +2,7 @@
 
 ### Tienda para comprar NFT's
 
-![](public%5Cimages%5CCompra.gif)   ` Gif que muestra la navegación del sitio web realizando una compra`  (El archivo gif se encuentra disponible en la carpeta Public/Images)
+<img className='Icono' src={'./images/compra.gif'}  alt="Gif de compra"/> ` Gif que muestra la navegación del sitio web realizando una compra`  (El archivo gif se encuentra disponible en la carpeta Public/Images)
 
 
 Primero debes crear tu aplicación con el comando:
