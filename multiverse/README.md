@@ -3,7 +3,8 @@
 ### Tienda para comprar NFT's
 
 ![Build Status](https://github.com/Duraexim/Multiverse---React/blob/master/multiverse/public/images/Compra.gif)
-` Gif que muestra la navegación del sitio web realizando una compra`  (El archivo gif se encuentra disponible en la carpeta Public/Images)
+
+- ` Gif que muestra la navegación del sitio web realizando una compra`  (El archivo gif se encuentra disponible en la carpeta Public/Images)
 
 
 Primero debes crear tu aplicación con el comando:
